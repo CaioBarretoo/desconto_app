@@ -1,0 +1,23 @@
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+  errors:
+    unused_import: warning
+    dead_code: info
+    missing_required_param: error
+    missing_return: error
+
+linter:
+  rules:
+    - always_declare_return_types
+    - avoid_print
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - prefer_final_fields
+    - unnecessary_this
+    - avoid_unused_constructor_parameters
+    - use_key_in_widget_constructors
+    - sort_child_properties_last
+    - type_annotate_public_apis
