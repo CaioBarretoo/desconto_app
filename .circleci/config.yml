@@ -3,16 +3,24 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cirrusci/flutter:stable  # Imagem Docker com Flutter instalado
+      - image: ghcr.io/cirruslabs/flutter:beta
     steps:
       - checkout
-      
+
+      - run:
+          name: Check Flutter Version
+          command: flutter --version
+
       - run:
           name: Flutter Doctor
           command: flutter doctor
 
       - run:
-          name: Analyze
+          name: Get Dependencies
+          command: flutter pub get
+
+      - run:
+          name: Analyze Code
           command: flutter analyze
 
       - run:
@@ -20,7 +28,7 @@ jobs:
           command: flutter test
 
       - run:
-          name: Build APK
+          name: Build APK (Debug)
           command: flutter build apk --debug
 
 workflows:
