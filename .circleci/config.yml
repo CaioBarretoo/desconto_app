@@ -27,10 +27,7 @@ jobs:
 
       - run:
           name: Build APK
-          command: |
-            # Disable the Gradle daemon to prevent it from disappearing unexpectedly
-            echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties
-            flutter build apk --debug
+          command: flutter build apk --debug
 
 workflows:
   version: 2
