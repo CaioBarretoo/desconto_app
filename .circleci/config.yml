@@ -12,10 +12,6 @@ jobs:
           command: flutter doctor
 
       - run:
-          name: Get Dependencies
-          command: flutter pub get
-
-      - run:
           name: Analyze
           command: flutter analyze
 
