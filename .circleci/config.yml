@@ -4,12 +4,12 @@ jobs:
   build:
     docker:
       - image: ghcr.io/cirruslabs/flutter:beta
-    resource_class: medium+
+    resource_class: medium  # ou medium+ se possível
     steps:
       - checkout
 
       - run:
-          name: Check Flutter Version
+          name: Flutter Version
           command: flutter --version
 
       - run:
@@ -21,7 +21,7 @@ jobs:
           command: flutter pub get
 
       - run:
-          name: Analyze Code
+          name: Analyze
           command: flutter analyze
 
       - run:
@@ -29,8 +29,8 @@ jobs:
           command: flutter test
 
       - run:
-          name: Build APK (Debug)
-          command: flutter build apk --debug
+          name: Build APK (No Daemon)
+          command: flutter build apk --debug --no-daemon
 
 workflows:
   version: 2
