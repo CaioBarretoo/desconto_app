@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: ghcr.io/cirruslabs/flutter:beta
+    resource_class: medium+
     steps:
       - checkout
 
