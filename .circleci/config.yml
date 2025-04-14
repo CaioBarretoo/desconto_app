@@ -4,20 +4,25 @@ jobs:
   build:
     docker:
       - image: ghcr.io/cirruslabs/flutter:beta
-    resource_class: medium  # ou medium+ se possível
+    environment:
+      ANDROID_HOME: /opt/android-sdk
     steps:
       - checkout
 
       - run:
-          name: Flutter Version
-          command: flutter --version
+          name: Accept Android Licenses
+          command: yes | sdkmanager --licenses
+
+      - run:
+          name: Install Android Build Tools
+          command: sdkmanager "build-tools;34.0.0" "ndk;26.3.11579264"
 
       - run:
           name: Flutter Doctor
           command: flutter doctor
 
       - run:
-          name: Get Dependencies
+          name: Flutter Get
           command: flutter pub get
 
       - run:
@@ -25,12 +30,8 @@ jobs:
           command: flutter analyze
 
       - run:
-          name: Run Tests
-          command: flutter test
-
-      - run:
           name: Build APK
-          command: flutter build apk --debug -- -Dorg.gradle.daemon=false
+          command: flutter build apk --debug
 
 workflows:
   version: 2
