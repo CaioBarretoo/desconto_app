@@ -29,8 +29,8 @@ jobs:
           command: flutter test
 
       - run:
-          name: Build APK (No Daemon)
-          command: flutter build apk --debug --no-daemon
+          name: Build APK
+          command: flutter build apk --debug -- -Dorg.gradle.daemon=false
 
 workflows:
   version: 2
